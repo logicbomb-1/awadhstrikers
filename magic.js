@@ -30,8 +30,13 @@ function render(){
     if(curF!=="all"&&cat!==curF)continue;
     var hay=(name+" "+bat+" "+bowl+" "+tags.join(" ")).toLowerCase();
     if(curQ&&hay.indexOf(curQ)===-1)continue;
-    var ph=p[1]?M+p[1]:"";
-    var img=ph?'<img src="'+ph+'" alt="'+name+'" loading="lazy" onerror="this.outerHTML=\'<div class=ph>'+ini(name)+'</div>\'">':'<div class="ph">'+ini(name)+'</div>';
+    // Load photos from a LOCAL images/ folder first (no external requests = no IP blocking).
+    // If a local file is missing, fall back to the CricHeroes CDN ONCE, then to initials.
+    var fn=p[1];
+    var img=fn
+      ? '<img src="images/'+fn+'" alt="'+name+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+        + 'onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src=\''+M+fn+'\';}else{this.outerHTML=\'<div class=ph>'+ini(name)+'</div>\';}">'
+      : '<div class="ph">'+ini(name)+'</div>';
     var tg="";
     for(var t=0;t<tags.length;t++){tg+='<span class="tg '+(t%2?"r":"b")+'">'+tags[t]+'</span>';}
     var c=document.createElement("div");

@@ -1,95 +1,137 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="emerald">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awadh Strikers | Lucknow's Royal Cricket Team</title>
-<link rel="icon" href="logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<canvas id="trail"></canvas>
-<div id="stars"></div>
-<div id="glow"></div>
-<div class="floatx a">🏏</div><div class="floatx b">🦁</div><div class="floatx c">🏆</div><div class="floatx d">👑</div>
+/* ===== Awadh Strikers — MAGIC PLUS layer ===== */
+(function(){
 
-<button id="themeBtn" class="theme-toggle" title="Switch theme">🎨</button>
+  /* 1. Scroll progress "crease" bar */
+  var bar=document.createElement("div");
+  bar.style.cssText="position:fixed;top:0;left:0;height:3px;width:0;z-index:90;background:linear-gradient(90deg,#ffe08a,#f1c14b,#13d089);box-shadow:0 0 12px rgba(241,193,75,.8);transition:width .1s";
+  document.body.appendChild(bar);
+  addEventListener("scroll",function(){
+    var h=document.documentElement;
+    var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=pct+"%";
+  });
 
-<div class="content">
-<header><nav class="wrap">
-<div class="brand"><img src="logo.png" alt="logo"><b>AWADH STRIKERS</b></div>
-<div class="navlinks"><a href="#story">About</a><a href="#squad">Squad</a><a href="#why">Highlights</a><a href="#join">Contact</a></div>
-</nav></header>
+  /* 2. Cinematic intro loader */
+  var intro=document.createElement("div");
+  intro.id="intro";
+  intro.style.cssText="position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 40%,#0a2a1f,#020a07);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s";
+  var logoSrc=(document.querySelector(".crest")&&document.querySelector(".crest").src)||"logo.png";
+  intro.innerHTML=
+    '<img src="'+logoSrc+'" style="width:160px;filter:drop-shadow(0 0 40px rgba(241,193,75,.5));animation:introPop 1s cubic-bezier(.2,1.4,.3,1) both">'+
+    '<div style="margin-top:24px;font-family:Anton,sans-serif;font-size:clamp(34px,7vw,72px);letter-spacing:3px;background:linear-gradient(135deg,#ffe08a,#f1c14b,#fff7e0,#f1c14b);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:introShine 1.6s linear infinite,introUp .9s .2s both">AWADH STRIKERS</div>'+
+    '<div style="margin-top:14px;color:#9fc9b6;letter-spacing:6px;font-size:12px;text-transform:uppercase;animation:introUp .9s .45s both">Loading the squad…</div>'+
+    '<div style="margin-top:26px;width:180px;height:4px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:0;background:linear-gradient(90deg,#ffe08a,#13d089);animation:introBar 1.6s ease forwards"></div></div>';
+  document.body.appendChild(intro);
+  var st=document.createElement("style");
+  st.textContent="@keyframes introPop{from{opacity:0;transform:scale(.4) rotate(-12deg)}to{opacity:1;transform:none}}@keyframes introShine{to{background-position:300% 0}}@keyframes introUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes introBar{to{width:100%}}";
+  document.head.appendChild(st);
+  var introHidden=false;
+  function hideIntro(){
+    if(introHidden)return;introHidden=true;
+    intro.style.opacity="0";intro.style.visibility="hidden";
+    setTimeout(function(){if(intro.parentNode)intro.remove();},800);
+  }
+  // Hide shortly after the page is interactive...
+  window.addEventListener("load",function(){setTimeout(hideIntro,900);});
+  // ...but NEVER let a slow or blocked image keep the loader (and squad) hidden on mobile.
+  setTimeout(hideIntro,2600);
 
-<div class="hero">
-<div class="crest-wrap" id="crestWrap"><img class="crest" id="crest" src="logo.png" alt="Awadh Strikers crest">
-<span class="hint">Tap the crest for a SIX! 🏏</span></div>
-<div class="tag">🦁 Lucknow's Royal Cricket Club</div>
-<h1><span class="l1">AWADH</span><br><span class="l2" id="shineWord">STRIKERS</span></h1>
-<p class="sub">Where the lion roars and the willow thunders. <b>Pride. Power. Lucknow.</b></p>
-<div class="loc">📍 Lucknow, India</div>
-<div class="cta"><a class="btn gold" href="#squad">Meet the Warriors</a><a class="btn ghost" href="#story">Our Story</a></div>
-</div>
+  /* 3. Ember / spark particle field drifting upward */
+  var cv=document.createElement("canvas");
+  cv.style.cssText="position:fixed;inset:0;z-index:1;pointer-events:none";
+  document.body.appendChild(cv);
+  var ctx=cv.getContext("2d"),sparks=[];
+  function size(){cv.width=innerWidth;cv.height=innerHeight;}
+  size();addEventListener("resize",size);
+  for(var i=0;i<46;i++){
+    sparks.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2.2+.6,s:Math.random()*.5+.2,o:Math.random()*.5+.2,d:Math.random()*6});
+  }
+  (function loop(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    for(var i=0;i<sparks.length;i++){
+      var p=sparks[i];p.y-=p.s;p.x+=Math.sin((p.y+p.d)/40)*.4;
+      if(p.y< -10){p.y=cv.height+10;p.x=Math.random()*cv.width;}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle="rgba(241,193,75,"+p.o+")";ctx.shadowColor="rgba(241,193,75,.9)";ctx.shadowBlur=8;ctx.fill();
+    }
+    requestAnimationFrame(loop);
+  })();
 
-<section id="story" class="reveal"><div class="wrap">
-<div class="story">
-<div>
-<small class="eyebrow">Who We Are</small>
-<h2>We Don't Just<br><span>Play Cricket</span></h2>
-<p>Awadh Strikers is Lucknow's own cricket team — built on the foundation of brotherhood, fierce competitive spirit, and an undying love for the gentleman's game.</p>
-<p>Our squad blends <b>explosive hard hitters, classical batters, deadly wildcard bowlers and sharp all-rounders</b> — a complete royal unit ready for any challenge.</p>
-<p>Every match is a celebration of skill, teamwork and the relentless pursuit of victory. Carrying the Nawabi spirit of grace and grit — <b>Lucknow ka apna team.</b></p>
-<div class="chips"><span class="chip">🏙️ Lucknow, UP</span><span class="chip">✅ CricHeroes Verified</span><span class="chip">🏏 All Formats</span><span class="chip">🦁 Royal Blood</span></div>
-</div>
-<div class="crest3d"><img src="logo.png" alt="crest 3d"></div>
-</div>
-</div></section>
+  /* 4. Magnetic buttons */
+  var mags=document.querySelectorAll(".btn,.theme-toggle,.fbtn");
+  for(var m=0;m<mags.length;m++){
+    (function(el){
+      el.style.transition="transform .2s ease";
+      el.addEventListener("mousemove",function(e){
+        var b=el.getBoundingClientRect();
+        var x=e.clientX-b.left-b.width/2, y=e.clientY-b.top-b.height/2;
+        el.style.transform="translate("+x*0.25+"px,"+y*0.35+"px)";
+      });
+      el.addEventListener("mouseleave",function(){el.style.transform="";});
+    })(mags[m]);
+  }
 
-<section id="squad" class="reveal"><div class="wrap">
-<div class="head"><small>The Squad</small><h2>MEET THE WARRIORS</h2><p>Hover or tap any warrior to flip the card and reveal their full record. Search and filter to find your favourite Striker.</p></div>
-<div class="searchbar">
-<span class="sicon">🔍</span>
-<input id="search" type="text" placeholder="Search by name, style or role...">
-<button id="clear" class="clearbtn" title="Clear">✕</button>
-</div>
-<div class="filters">
-<button class="fbtn active" data-f="all">All Players</button>
-<button class="fbtn" data-f="bat">Batters</button>
-<button class="fbtn" data-f="bowl">Bowlers</button>
-<button class="fbtn" data-f="allr">All-Rounders</button>
-</div>
-<div class="grid" id="grid"></div>
-<div id="noresult" class="noresult">No warriors found — try another name. 🦁</div>
-</div></section>
+  /* 5. Count-up animation when squad scrolls into view */
+  function animateCount(el){
+    var target=parseInt(el.getAttribute("data-final"),10);
+    if(isNaN(target)){el.textContent=el.getAttribute("data-final");return;}
+    var start=0,step=Math.max(1,Math.ceil(target/45));
+    var iv=setInterval(function(){
+      start+=step;
+      if(start>=target){start=target;clearInterval(iv);}
+      el.textContent=start.toLocaleString();
+    },22);
+  }
+  function prepCounts(){
+    var nums=document.querySelectorAll(".statrow b");
+    for(var i=0;i<nums.length;i++){
+      var el=nums[i];
+      if(!el.getAttribute("data-final")){el.setAttribute("data-final",el.textContent);}
+    }
+  }
+  var squad=document.getElementById("squad");
+  if(squad){
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          prepCounts();
+          var nums=document.querySelectorAll(".statrow b");
+          for(var i=0;i<nums.length;i++)animateCount(nums[i]);
+        }
+      });
+    },{threshold:.15});
+    co.observe(squad);
+  }
 
-<section id="why" class="reveal"><div class="wrap">
-<div class="head"><small>Why We're Special</small><h2>CLUB HIGHLIGHTS</h2></div>
-<div class="hl">
-<div class="hc"><span class="ic">🔥</span><h4>Explosive Batting</h4><p>From destroyers who clear any boundary to classical batters who build innings brick by brick — our lineup has every gear covered.</p></div>
-<div class="hc"><span class="ic">🌀</span><h4>Lethal Bowling</h4><p>Wildcard spinners that keep batters guessing and economists that choke the runs. Every over with us is a battle won.</p></div>
-<div class="hc"><span class="ic">🤝</span><h4>Brotherhood First</h4><p>Beyond the field, we're family. The bond between our players is what makes us more than a team — it's a community.</p></div>
-<div class="hc"><span class="ic">📊</span><h4>CricHeroes Verified</h4><p>Every Striker is verified on CricHeroes with detailed stats, performance tracking and professional profiles.</p></div>
-<div class="hc"><span class="ic">🏙️</span><h4>Lucknow Proud</h4><p>Representing the Nawabi spirit of Lucknow — grace, elegance and tenacity on every pitch we play across the city.</p></div>
-<div class="hc"><span class="ic">👑</span><h4>Royal Roar</h4><p>The crowned lion on our crest isn't just a logo — it's our identity. Regal, fearless and always on the attack.</p></div>
-</div>
-</div></section>
+  /* 6. Scroll-to-explore mouse indicator in hero */
+  var hero=document.querySelector(".hero");
+  if(hero){
+    var ind=document.createElement("a");
+    ind.href="#story";
+    ind.innerHTML='<span></span>';
+    ind.style.cssText="display:block;margin:46px auto 0;width:26px;height:44px;border:2px solid rgba(241,193,75,.5);border-radius:16px;position:relative;cursor:pointer";
+    ind.querySelector("span").style.cssText="position:absolute;left:50%;top:8px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#ffe08a;animation:scrollDot 1.5s infinite";
+    hero.appendChild(ind);
+    var st2=document.createElement("style");
+    st2.textContent="@keyframes scrollDot{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(20px)}}";
+    document.head.appendChild(st2);
+  }
 
-<section id="join" class="reveal"><div class="wrap head">
-<small>Get In Touch</small><h2>READY TO JOIN THE ROAR?</h2>
-<p>We're always looking for passionate cricketers who want to take their game to the next level. Find us on CricHeroes!</p>
-<div class="cta"><a class="btn gold" href="https://cricheroes.com/team-profile/13208879/awadh-strikers/members" target="_blank" rel="noopener">View Us on CricHeroes</a><a class="btn ghost" href="#squad">Browse Squad</a></div>
-</div></section>
+  /* 7. Gentle "ding" on SIX (only after user clicks the crest) */
+  var cr=document.getElementById("crest");
+  if(cr){
+    cr.addEventListener("click",function(){
+      try{
+        var AC=window.AudioContext||window.webkitAudioContext;
+        var ac=new AC(),o=ac.createOscillator(),g=ac.createGain();
+        o.type="triangle";o.frequency.setValueAtTime(880,ac.currentTime);
+        o.frequency.exponentialRampToValueAtTime(1320,ac.currentTime+0.15);
+        g.gain.setValueAtTime(0.0001,ac.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.25,ac.currentTime+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+0.4);
+        o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+0.42);
+      }catch(e){}
+    });
+  }
 
-<footer><div class="wrap">
-<img src="logo.png" alt="logo">
-<div class="fn">AWADH STRIKERS</div>
-<p>Lucknow's royal cricket club · Roar of the Lion 🦁</p>
-<p>© <span id="yr"></span> Awadh Strikers · Lucknow, India</p>
-<p style="font-size:13px">Built with ❤️ for the love of cricket</p>
-</div></footer>
-</div>
-<canvas id="confetti"></canvas>
-<script src="magic.js"></script>
-</body>
-</html>
+})();
