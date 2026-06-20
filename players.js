@@ -1,6 +1,6 @@
 var M="https://media.cricheroes.in/user_profile/";
 var P=[
-["Avinash","1781546330578_1c4BDWWmHeZZ.jpg","RHB","Right-arm medium",135,693,116,["Classicist","Wildcard"],"allr","The skipper who leads with the bat and bites with the ball — 116 wickets of pure leadership."],
+["Avinash","1781546330578_1c4BDWWmHeZZ.jpg","RHB","Right-arm medium",121,693,116,["Classicist","Wildcard"],"allr","The leader who leads with the bat and bites with the ball — 116 wickets of pure leadership."],
 ["Abhishek Srivastava","1753046905564_bdbc6UTS1esz.jpg","RHB","Right-arm fast",39,64,42,["Aspirant"],"bowl","A genuine quick who lets the new ball do the talking."],
 ["Abhishek Tiwari","1735477198133_yfkC3RXSDTlD.jpeg","RHB","Right-arm medium",76,274,16,["Classicist","Aspirant"],"allr","Textbook strokes and tidy medium pace — dependable in every situation."],
 ["Ashwani","1766931215187_1SVHyRRNONvo.jpg","RHB","Right-arm Leg Break",72,938,89,["Hard Hitter","Wildcard"],"allr","Leg-spin web in hand, brute power in the swing — a true matchwinner."],
