@@ -124,12 +124,25 @@ if(crest){
   });
 }
 
-// scroll reveal
-// threshold:0 — reveal as soon as ANY part enters view. (A 12% threshold never fires for
-// the tall single-column squad on mobile, which left the whole section stuck invisible.)
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in");});},{threshold:0,rootMargin:"0px 0px -40px 0px"});
-var rv=document.querySelectorAll(".reveal");
-for(var r=0;r<rv.length;r++)io.observe(rv[r]);
+// scroll reveal — simple rect check. This does NOT use IntersectionObserver thresholds,
+// which can never fire for a section taller than the screen (the single-column squad on
+// mobile), leaving it stuck invisible until a filter/search shrank it. Here, anything that
+// overlaps the viewport at all is revealed.
+function revealInView(){
+  var els=document.querySelectorAll(".reveal:not(.in),.mu-reveal:not(.in)");
+  var vh=window.innerHeight||document.documentElement.clientHeight||0;
+  for(var i=0;i<els.length;i++){
+    var b=els[i].getBoundingClientRect();
+    if(b.top<vh-30&&b.bottom>0)els[i].classList.add("in");
+  }
+}
+addEventListener("scroll",revealInView,{passive:true});
+addEventListener("resize",revealInView);
+addEventListener("load",revealInView);
+document.addEventListener("DOMContentLoaded",revealInView);
+revealInView();
+// keep revealing cards added later by filtering/search, and guarantee nothing stays hidden
+setInterval(revealInView,500);
 
 // theme toggle
 var tb=document.getElementById("themeBtn");
