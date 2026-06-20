@@ -125,7 +125,9 @@ if(crest){
 }
 
 // scroll reveal
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in");});},{threshold:.12});
+// threshold:0 — reveal as soon as ANY part enters view. (A 12% threshold never fires for
+// the tall single-column squad on mobile, which left the whole section stuck invisible.)
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in");});},{threshold:0,rootMargin:"0px 0px -40px 0px"});
 var rv=document.querySelectorAll(".reveal");
 for(var r=0;r<rv.length;r++)io.observe(rv[r]);
 

@@ -94,7 +94,9 @@
   }
 
   /* ---------- 5. scroll reveal ---------- */
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  // threshold:0 so the tall single-column squad section on mobile reveals as soon as any
+  // part is visible (a 12% threshold can never be met by a section taller than the screen).
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0, rootMargin: "0px 0px -40px 0px" });
 
   /* ---------- 6. magnetic buttons ---------- */
   function magnetize(btn) {
