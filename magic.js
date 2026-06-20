@@ -30,8 +30,12 @@ function render(){
     if(curF!=="all"&&cat!==curF)continue;
     var hay=(name+" "+bat+" "+bowl+" "+tags.join(" ")).toLowerCase();
     if(curQ&&hay.indexOf(curQ)===-1)continue;
-    var ph=p[1]?M+p[1]:"";
-    var img=ph?'<img src="'+ph+'" alt="'+name+'" loading="lazy" onerror="this.outerHTML=\'<div class=ph>'+ini(name)+'</div>\'">':'<div class="ph">'+ini(name)+'</div>';
+    // Every card renders INSTANTLY with an initials avatar — the squad never waits on a
+    // network request. The photo (local images/ first, CricHeroes CDN as fallback) is loaded
+    // in the background and only swapped in once it has fully loaded. If a request hangs or
+    // fails (e.g. your IP is rate-limited), the avatar simply stays — nothing breaks or stalls.
+    var fn=p[1];
+    var img='<div class="ph">'+ini(name)+'</div>';
     var tg="";
     for(var t=0;t<tags.length;t++){tg+='<span class="tg '+(t%2?"r":"b")+'">'+tags[t]+'</span>';}
     var c=document.createElement("div");
@@ -65,6 +69,16 @@ function render(){
       for(var k=0;k<sh.length;k++){sh[k].style.setProperty("--mx",mx+"%");sh[k].style.setProperty("--my",my+"%");}
     });
     g.appendChild(c);
+    // Background photo upgrade: load detached, swap into the ring only on success.
+    if(fn){
+      (function(card,file,nm){
+        var im=new Image();
+        im.alt=nm;im.decoding="async";im.referrerPolicy="no-referrer";
+        im.onload=function(){var r=card.querySelector(".face.front .ring");if(r){r.innerHTML="";r.appendChild(im);}};
+        im.onerror=function(){if(!im.__fb){im.__fb=1;im.src=M+file;}}; // try CDN once; else keep avatar
+        im.src="images/"+file;
+      })(c,fn,name);
+    }
     shown++;
   }
   var nr=document.getElementById("noresult");
