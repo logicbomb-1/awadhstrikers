@@ -22,7 +22,7 @@
     transform:translate(-50%,-160%) scale(.6);opacity:0;transition:opacity .18s,transform .18s;white-space:nowrap}
   .mu-mag.show{opacity:1;transform:translate(-50%,-160%) scale(1)}
   .mu-bar{position:fixed;left:0;top:0;height:3px;z-index:9995;width:0;
-    background:linear-gradient(90deg,#d4af37,#ffe7a3,#7fd6a6);box-shadow:0 0 14px rgba(212,175,55,.8)}
+    background:linear-gradient(90deg,#d4af37,#ffe7a3,#5b8dff);box-shadow:0 0 14px rgba(212,175,55,.8)}
   .mu-top{position:fixed;right:22px;bottom:22px;z-index:9993;width:48px;height:48px;border:none;
     border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:18px;color:#1a1207;
     background:linear-gradient(135deg,#ffe7a3,#d4af37);box-shadow:0 10px 30px rgba(0,0,0,.45);
@@ -59,7 +59,7 @@
     const mk = (s, x, y, hue) => {
       const o = document.createElement("div"); o.className = "mu-orb";
       o.style.cssText += `width:${s}px;height:${s}px;left:${x};top:${y};` +
-        (hue ? "background:radial-gradient(circle at 30% 30%,rgba(127,214,166,.55),transparent 70%)" : "");
+        (hue ? "background:radial-gradient(circle at 30% 30%,rgba(91,141,255,.55),transparent 70%)" : "");
       document.body.appendChild(o);
       let t = Math.random() * 6.28;
       (function f() { t += .004; o.style.transform = `translate(${Math.cos(t) * 26}px,${Math.sin(t * 1.3) * 30}px)`; requestAnimationFrame(f); })();
