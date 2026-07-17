@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="royal">
+<html lang="en" data-theme="emerald">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +12,15 @@
 <body>
 <canvas id="trail"></canvas>
 <div id="stars"></div>
-<div class="beam left"></div><div class="beam right"></div>
 <div id="glow"></div>
 <div class="floatx a">🏏</div><div class="floatx b">🦁</div><div class="floatx c">🏆</div><div class="floatx d">👑</div>
 
 <button id="themeBtn" class="theme-toggle" title="Switch theme">🎨</button>
-<button id="musicBtn" class="music-toggle" title="Play / mute team anthem">🔊</button>
-<audio id="bgm" loop preload="auto"><source src="song.mpeg" type="audio/mpeg"></audio>
 
 <div class="content">
 <header><nav class="wrap">
 <div class="brand"><img src="logo.png" alt="logo"><b>AWADH STRIKERS</b></div>
-<div class="navlinks"><a href="#story">About</a><a href="#stats">Records</a><a href="#squad">Squad</a><a href="#why">Highlights</a><a href="#join">Contact</a></div>
+<div class="navlinks"><a href="#story">About</a><a href="#players">Players</a><a href="#squad">Squad</a><a href="#why">Highlights</a><a href="#join">Contact</a></div>
 </nav></header>
 
 <div class="hero">
@@ -35,16 +32,6 @@
 <div class="loc">📍 Lucknow, India</div>
 <div class="cta"><a class="btn gold" href="#squad">Meet the Warriors</a><a class="btn ghost" href="#story">Our Story</a></div>
 </div>
-
-<div class="statsband reveal"><div class="inner scoreboard">
-<div class="sbhead"><span class="scdot"></span>🏟️ CAREER SCOREBOARD<span class="scdot"></span></div>
-<div class="sbgrid">
-<div class="sb"><span class="ic">🦁</span><b class="n" id="sbPlayers">0</b><span class="lb">Warriors</span></div>
-<div class="sb"><span class="ic">🏏</span><b class="n" id="sbRuns">0</b><span class="lb">Runs Scored</span></div>
-<div class="sb"><span class="ic">🎯</span><b class="n" id="sbWkts">0</b><span class="lb">Wickets Taken</span></div>
-<div class="sb"><span class="ic">🏟️</span><b class="n" id="sbMatch">0</b><span class="lb">Matches Played</span></div>
-</div>
-</div></div>
 
 <section id="story" class="reveal"><div class="wrap">
 <div class="story">
@@ -60,26 +47,12 @@
 </div>
 </div></section>
 
-<section id="stats" class="reveal"><div class="wrap">
-<div class="head"><small>Hall of Fame</small><h2>STAR PERFORMERS</h2><p>The record-holders leading the charge — live from the Strikers' career numbers.</p></div>
-<div class="podium" id="podium"></div>
-<div class="lbwrap">
-<div class="lbtabs"><button class="lbtab active" data-m="5">🏏 Top Run-Scorers</button><button class="lbtab" data-m="6">🎯 Top Wicket-Takers</button><button class="lbtab" data-m="4">🧢 Most Matches</button></div>
-<div class="lb" id="lb"></div>
-</div>
+<section id="players" class="reveal"><div class="wrap">
+<div class="head"><small>Meet The Team</small><h2>PLAYER GALLERY</h2><p>Get to know each warrior with their photos and stories.</p></div>
+<div class="players-grid" id="playersGrid"></div>
 </div></section>
 
-<section id="squad" class="reveal">
-<div class="groundbg" aria-hidden="true"><svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
-<ellipse cx="400" cy="300" rx="378" ry="284" fill="#0e4634" opacity=".18"/>
-<ellipse cx="400" cy="300" rx="378" ry="284" fill="none" stroke="#f2c250" stroke-width="2.5" opacity=".42"/>
-<ellipse cx="400" cy="300" rx="235" ry="172" fill="none" stroke="#f2c250" stroke-width="1.8" stroke-dasharray="8 10" opacity=".34"/>
-<rect x="380" y="190" width="40" height="220" rx="5" fill="#f2c250" fill-opacity=".07" stroke="#f2c250" stroke-opacity=".4" stroke-width="1.4"/>
-<line x1="378" y1="218" x2="422" y2="218" stroke="#f2c250" stroke-width="1.8" opacity=".48"/>
-<line x1="378" y1="382" x2="422" y2="382" stroke="#f2c250" stroke-width="1.8" opacity=".48"/>
-<line x1="400" y1="190" x2="400" y2="410" stroke="#f2c250" stroke-width="1" opacity=".22"/>
-</svg></div>
-<div class="wrap">
+<section id="squad" class="reveal"><div class="wrap">
 <div class="head"><small>The Squad</small><h2>MEET THE WARRIORS</h2><p>Hover or tap any warrior to flip the card and reveal their full record. Search and filter to find your favourite Striker.</p></div>
 <div class="searchbar">
 <span class="sicon">🔍</span>
@@ -110,18 +83,14 @@
 
 <section id="join" class="reveal"><div class="wrap head">
 <small>Get In Touch</small><h2>READY TO JOIN THE ROAR?</h2>
-<p>We're always looking for passionate cricketers who want to take their game to the next level. Catch our matches on YouTube and follow the squad on CricHeroes!</p>
-<div class="cta"><a class="btn yt" href="https://www.youtube.com/@awadhstrikers" target="_blank" rel="noopener">▶ Watch on YouTube</a><a class="btn gold" href="https://cricheroes.com/team-profile/13208879/awadh-strikers/members" target="_blank" rel="noopener">View Us on CricHeroes</a><a class="btn ghost" href="#squad">Browse Squad</a></div>
+<p>We're always looking for passionate cricketers who want to take their game to the next level. Find us on CricHeroes!</p>
+<div class="cta"><a class="btn gold" href="https://cricheroes.com/team-profile/13208879/awadh-strikers/members" target="_blank" rel="noopener">View Us on CricHeroes</a><a class="btn ghost" href="#squad">Browse Squad</a></div>
 </div></section>
 
 <footer><div class="wrap">
 <img src="logo.png" alt="logo">
 <div class="fn">AWADH STRIKERS</div>
 <p>Lucknow's royal cricket club · Roar of the Lion 🦁</p>
-<div class="social">
-<a class="soc yt" href="https://www.youtube.com/@awadhstrikers" target="_blank" rel="noopener">▶ YouTube</a>
-<a class="soc" href="https://cricheroes.com/team-profile/13208879/awadh-strikers/members" target="_blank" rel="noopener">🏏 CricHeroes</a>
-</div>
 <p>© <span id="yr"></span> Awadh Strikers · Lucknow, India</p>
 <p style="font-size:13px">Built with ❤️ for the love of cricket</p>
 </div></footer>
@@ -129,6 +98,13 @@
 
 <canvas id="confetti"></canvas>
 
+<div id="photoModal" class="photo-modal">
+  <span class="close-modal">&times;</span>
+  <img id="modalImg" src="" alt="Player Photo" class="modal-content">
+  <div id="modalCaption"></div>
+</div>
+
+<script src="players.js"></script>
 <script src="magic.js"></script>
 <script src="magic-plus.js"></script>
 <script src="magic-pro.js"></script>

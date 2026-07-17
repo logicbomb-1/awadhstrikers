@@ -1,21 +1,45 @@
 var M="https://media.cricheroes.in/user_profile/";
+var LocalImages={
+  "Avinash":"avinash.png",
+  "Abhishek Srivastava":"",
+  "Abhishek Tiwari":"",
+  "Ashwani":"",
+  "Chandan Manglani":"chandan.png",
+  "Chandan Personal":"",
+  "Himanshu":"honey.png",
+  "Kuldeep Singh":"kuldeep.png",
+  "Mukesh":"mukesh.png",
+  "Pankaj":"pankaj.png",
+  "Parth Shukla":"",
+  "Prateek Sahu":"",
+  "Ravi Srivastava":"ravi.png",
+  "Rohan Bhawnani":"rohan.png",
+  "Sanju S":"",
+  "Satyam":"satyam.png",
+  "Saurabh Rai":"saurabh.png",
+  "Shreyansh":"shashank.png",
+  "Sukhbeer Singh":"sukhbeer.png"
+};
 var P=[
-["Avinash","1781546330578_1c4BDWWmHeZZ.jpg","RHB","Right-arm medium",135,693,116,["Captain","Wildcard"],"allr","The skipper who leads with the bat and bites with the ball — 116 wickets of pure leadership."],
-["Satyam","1686711598723_8uzQsDOduoUD.jpg","LHB","Left-arm fast",156,1391,43,["Destroyer","Aspirant"],"allr","A southpaw destroyer who swings it both ways — 1391 runs and rising."],
+["Avinash","1781546330578_1c4BDWWmHeZZ.jpg","RHB","Right-arm medium",135,693,116,["Classicist","Wildcard"],"allr","The skipper who leads with the bat and bites with the ball — 116 wickets of pure leadership."],
 ["Abhishek Srivastava","1753046905564_bdbc6UTS1esz.jpg","RHB","Right-arm fast",39,64,42,["Aspirant"],"bowl","A genuine quick who lets the new ball do the talking."],
 ["Abhishek Tiwari","1735477198133_yfkC3RXSDTlD.jpeg","RHB","Right-arm medium",76,274,16,["Classicist","Aspirant"],"allr","Textbook strokes and tidy medium pace — dependable in every situation."],
+["Ashwani","1766931215187_1SVHyRRNONvo.jpg","RHB","Right-arm Leg Break",72,938,89,["Hard Hitter","Wildcard"],"allr","Leg-spin web in hand, brute power in the swing — a true matchwinner."],
+["Chandan Manglani","1742654078721_uRan421Z6PSD.jpeg","RHB","Right-arm medium",81,488,4,["Accumulator"],"bat","The anchor who builds the innings brick by brick."],
+["Chandan Personal","","RHB","Right-arm fast",10,88,2,[],"bat","Quietly effective with the willow — a steady middle-order presence."],
+["Himanshu","","RHB","Right-arm Leg Break",38,165,12,["Steady Batter","Aspirant"],"allr","Calm at the crease and crafty with the leg-break."],
 ["Kuldeep Singh","1743824564611_FLdZIUv2pKR2.jpg","RHB","Right-arm medium",130,1349,129,["Accumulator","Wildcard"],"allr","1349 runs and 129 wickets — the engine-room all-rounder."],
 ["Mukesh","","RHB","",17,39,0,[],"bat","A scrappy competitor who battles for every run the team needs."],
-["Sanju","1781397887137_S3Ecu9XN7zvV.jpg","RHB","Right-arm medium",125,830,69,["Classicist","Aspirant"],"allr","Elegant runs and 69 wickets — class personified with bat and ball."],
-["Chandan","","RHB","Right-arm fast",10,88,2,[],"bat","Quietly effective with the willow — a steady middle-order presence."],
 ["Pankaj","","RHB","Right-arm medium",11,106,4,[],"allr","Handy with bat and ball — the utility man every squad treasures."],
-["Rohan Bhawnani","1776401012825_CPiVWnz8KccF.jpeg","RHB","Right-arm medium",21,241,0,["Accumulator"],"bat","Patient, precise and tough to dislodge — the glue of the middle order."],
-["Sukhi","1780671558209_0SI1O3w6eeBr.jpg","RHB","Right-arm Off Break",378,6866,386,["Accumulator","Economist"],"allr","378 matches, 6866 runs, 386 wickets — the ultimate veteran all-rounder."],
-["Saurabh Rai","1734154128879_DE84U9kde17K.jpg","RHB","Right-arm fast",48,1057,54,["Hard Hitter","Aspirant"],"allr","1000+ runs and 54 wickets — the explosive all-round package."],
-["Shashank","","RHB","Right-arm Off Break",329,6926,375,["Destroyer","Economist"],"allr","329 matches, 6926 runs, 375 wickets — a destroyer with the bat and a miser with the ball."],
+["Parth Shukla","1777499793971_SZMmKjPi5yjk.jpg","RHB","Slow left-arm chinaman",4,80,2,[],"allr","A rare chinaman magician — mystery spin that ties batters in knots."],
+["Prateek Sahu","1778296728533_5Y0rhp4CGHja.jpg","RHB","Right-arm medium",11,150,16,["Aspirant"],"allr","16 wickets in just 11 games — a wicket-taking spark on the rise."],
 ["Ravi Srivastava","1744434308364_IgHkX9wSttmh.jpg","LHB","Left-arm medium",80,365,3,["Steady Batter"],"bat","The left-hander who brings balance and a cool head to the top order."],
-["Ashwani","1766931215187_1SVHyRRNONvo.jpg","RHB","Right-arm Leg Break",72,938,89,["Hard Hitter","Wildcard"],"allr","Leg-spin web in hand, brute power in the swing — a true matchwinner."],
-["Himanshu","","RHB","Right-arm Leg Break",38,165,12,["Steady Batter","Aspirant"],"allr","Calm at the crease and crafty with the leg-break."]
+["Rohan Bhawnani","1776401012825_CPiVWnz8KccF.jpeg","RHB","Right-arm medium",21,241,0,["Accumulator"],"bat","Patient, precise and tough to dislodge — the glue of the middle order."],
+["Sanju S","1781397887137_S3Ecu9XN7zvV.jpg","RHB","Right-arm medium",125,830,69,["Classicist","Aspirant"],"allr","Elegant runs and 69 wickets — class personified with bat and ball."],
+["Satyam","1686711598723_8uzQsDOduoUD.jpg","LHB","Left-arm fast",156,1391,43,["Destroyer","Aspirant"],"allr","A southpaw destroyer who swings it both ways — 1391 runs and rising."],
+["Saurabh Rai","1734154128879_DE84U9kde17K.jpg","RHB","Right-arm fast",48,1057,54,["Hard Hitter","Aspirant"],"allr","1000+ runs and 54 wickets — the explosive all-round package."],
+["Shreyansh","1735481041131_ZrFXP0mBZnA6.jpg","RHB","Right-arm fast",29,510,5,["Destroyer"],"bat","510 runs of fearless hitting — a destroyer who plays without fear."],
+["Sukhbeer Singh","1780671558209_0SI1O3w6eeBr.jpg","RHB","Right-arm Off Break",378,6866,386,["Accumulator","Economist"],"allr","378 matches, 6866 runs, 386 wickets — the ultimate veteran all-rounder."]
 ];
 var curF="all",curQ="";
 function ini(n){return n.split(" ").map(function(w){return w[0];}).join("").slice(0,2).toUpperCase();}
@@ -72,3 +96,38 @@ if(mv){
 }
 var y=document.getElementById("yr");
 if(y)y.textContent=new Date().getFullYear();
+
+function renderPlayerGallery(){
+  var pg=document.getElementById("playersGrid");
+  if(!pg)return;
+  pg.innerHTML="";
+  var galleryItems=0;
+  for(var i=0;i<P.length;i++){
+    var p=P[i],name=p[0],desc=p[9];
+    var localImg=LocalImages[name]||"";
+    if(!localImg)continue;
+    var pc=document.createElement("div");
+    pc.className="player-card";
+    pc.style.animationDelay=(galleryItems*0.08)+"s";
+    pc.innerHTML='<div class="player-img"><img src="images/'+localImg+'" alt="'+name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=player-ph>'+ini(name)+'</div>\'"></div><h3>'+name+'</h3><p class="player-desc">'+desc+'</p>';
+    pc.setAttribute("data-player",name);
+    pc.setAttribute("data-img","images/"+localImg);
+    pc.addEventListener("click",function(){
+      var img=this.getAttribute("data-img"),player=this.getAttribute("data-player");
+      var modal=document.getElementById("photoModal"),modalImg=document.getElementById("modalImg"),caption=document.getElementById("modalCaption");
+      modalImg.src=img;
+      caption.textContent=player;
+      modal.classList.add("show");
+    });
+    pg.appendChild(pc);
+    galleryItems++;
+  }
+}
+renderPlayerGallery();
+
+var modal=document.getElementById("photoModal"),closeBtn=document.querySelector(".close-modal");
+if(modal&&closeBtn){
+  closeBtn.addEventListener("click",function(){modal.classList.remove("show");});
+  modal.addEventListener("click",function(e){if(e.target===this)this.classList.remove("show");});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")modal.classList.remove("show");});
+}

@@ -3,7 +3,7 @@
 
   /* 1. Scroll progress "crease" bar */
   var bar=document.createElement("div");
-  bar.style.cssText="position:fixed;top:0;left:0;height:3px;width:0;z-index:90;background:linear-gradient(90deg,#ffe6a0,#f2c250,#5b8dff);box-shadow:0 0 12px rgba(241,193,75,.8);transition:width .1s";
+  bar.style.cssText="position:fixed;top:0;left:0;height:3px;width:0;z-index:90;background:linear-gradient(90deg,#ffe08a,#f1c14b,#13d089);box-shadow:0 0 12px rgba(241,193,75,.8);transition:width .1s";
   document.body.appendChild(bar);
   addEventListener("scroll",function(){
     var h=document.documentElement;
@@ -14,13 +14,13 @@
   /* 2. Cinematic intro loader */
   var intro=document.createElement("div");
   intro.id="intro";
-  intro.style.cssText="position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 40%,#0a1a40,#02060f);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s";
+  intro.style.cssText="position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 40%,#0a2a1f,#020a07);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s";
   var logoSrc=(document.querySelector(".crest")&&document.querySelector(".crest").src)||"logo.png";
   intro.innerHTML=
     '<img src="'+logoSrc+'" style="width:160px;filter:drop-shadow(0 0 40px rgba(241,193,75,.5));animation:introPop 1s cubic-bezier(.2,1.4,.3,1) both">'+
     '<div style="margin-top:24px;font-family:Anton,sans-serif;font-size:clamp(34px,7vw,72px);letter-spacing:3px;background:linear-gradient(135deg,#ffe08a,#f1c14b,#fff7e0,#f1c14b);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:introShine 1.6s linear infinite,introUp .9s .2s both">AWADH STRIKERS</div>'+
-    '<div style="margin-top:14px;color:#9fb2dd;letter-spacing:6px;font-size:12px;text-transform:uppercase;animation:introUp .9s .45s both">Loading the squad…</div>'+
-    '<div style="margin-top:26px;width:180px;height:4px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:0;background:linear-gradient(90deg,#ffe6a0,#5b8dff);animation:introBar 1.6s ease forwards"></div></div>';
+    '<div style="margin-top:14px;color:#9fc9b6;letter-spacing:6px;font-size:12px;text-transform:uppercase;animation:introUp .9s .45s both">Loading the squad…</div>'+
+    '<div style="margin-top:26px;width:180px;height:4px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:0;background:linear-gradient(90deg,#ffe08a,#13d089);animation:introBar 1.6s ease forwards"></div></div>';
   document.body.appendChild(intro);
   var st=document.createElement("style");
   st.textContent="@keyframes introPop{from{opacity:0;transform:scale(.4) rotate(-12deg)}to{opacity:1;transform:none}}@keyframes introShine{to{background-position:300% 0}}@keyframes introUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes introBar{to{width:100%}}";
