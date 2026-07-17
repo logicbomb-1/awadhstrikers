@@ -4,9 +4,9 @@ var LocalImages={
   "Abhishek Srivastava":"",
   "Abhishek Tiwari":"",
   "Ashwani":"",
-  "Chandan Manglani":"chandan.png",
+  "Chandan":"chandan.png",
   "Chandan Personal":"",
-  "Himanshu":"honey.png",
+  "Honey":"honey.png",
   "Kuldeep Singh":"kuldeep.png",
   "Mukesh":"mukesh.png",
   "Pankaj":"pankaj.png",
@@ -17,7 +17,7 @@ var LocalImages={
   "Sanju S":"",
   "Satyam":"satyam.png",
   "Saurabh Rai":"saurabh.png",
-  "Shreyansh":"shashank.png",
+  "Shashank":"shashank.png",
   "Sukhbeer Singh":"sukhbeer.png"
 };
 var P=[
