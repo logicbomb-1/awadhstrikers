@@ -4,8 +4,7 @@ var LocalImages={
   "Abhishek Srivastava":"",
   "Abhishek Tiwari":"",
   "Ashwani":"",
-  "Chandan":"chandan.png",
-  "Chandan Personal":"",
+  "Chandan Personal":"chandan.png",
   "Honey":"honey.png",
   "Kuldeep Singh":"kuldeep.png",
   "Mukesh":"mukesh.png",
@@ -38,6 +37,7 @@ var P=[
 ["Sanju S","1781397887137_S3Ecu9XN7zvV.jpg","RHB","Right-arm medium",125,830,69,["Classicist","Aspirant"],"allr","Elegant runs and 69 wickets — class personified with bat and ball."],
 ["Satyam","1686711598723_8uzQsDOduoUD.jpg","LHB","Left-arm fast",156,1391,43,["Destroyer","Aspirant"],"allr","A southpaw destroyer who swings it both ways — 1391 runs and rising."],
 ["Saurabh Rai","1734154128879_DE84U9kde17K.jpg","RHB","Right-arm fast",48,1057,54,["Hard Hitter","Aspirant"],"allr","1000+ runs and 54 wickets — the explosive all-round package."],
+["Shashank","","RHB","Right-arm fast",330,6932,376,["Hard Hitter","Destroyer"],"allr","330 matches, 6932 runs, 376 wickets — a big-hitting all-rounder and lightning-quick reflex fielder with safe hands."],
 ["Shreyansh","1735481041131_ZrFXP0mBZnA6.jpg","RHB","Right-arm fast",29,510,5,["Destroyer"],"bat","510 runs of fearless hitting — a destroyer who plays without fear."],
 ["Sukhbeer Singh","1780671558209_0SI1O3w6eeBr.jpg","RHB","Right-arm Off Break",378,6866,386,["Accumulator","Economist"],"allr","378 matches, 6866 runs, 386 wickets — the ultimate veteran all-rounder."]
 ];
