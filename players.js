@@ -1,11 +1,11 @@
 var M="https://media.cricheroes.in/user_profile/";
 var LocalImages={
   "Avinash":"avinash.png",
-  "Abhishek Srivastava":"",
+  "Abhishek Srivastava":"honey.png",
   "Abhishek Tiwari":"",
   "Ashwani":"",
   "Chandan Personal":"chandan.png",
-  "Honey":"honey.png",
+  "Honey":"",
   "Kuldeep Singh":"kuldeep.png",
   "Mukesh":"mukesh.png",
   "Pankaj":"pankaj.png",
